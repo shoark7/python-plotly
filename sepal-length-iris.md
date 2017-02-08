@@ -66,4 +66,4 @@ py.plot(fig, filename='sepal-length-comparison')
 ```
 오늘 numpy를 처음 배워서 아직 잘 활용은 못한다. 하지만 더 익숙해질듯
 
-![graph](/home/sunghwanpark/gitrepo/python-plotly/images/sepal-length-comparsion.png  "graph")
+![graph](../images/sepal-length-comparsion.png  "graph")
