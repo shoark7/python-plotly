@@ -14,13 +14,17 @@ import plotly.graph_objs as go
 fp = open('/home/sunghwanpark/dataset/plotly-datasets/iris.csv')
 original_text = fp.read()
 splited_text_by_row = original_text.split('\n')
-columns = splited_text_by_row[0].split(',')      # ['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth', 'Name']
+columns = splited_text_by_row[0].split(',')
+# ['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth', 'Name']
 
 trimmed_text_by_row = [row.split(',') for row in splited_text_by_row]
-trimmed_text_by_row = trimmed_text_by_row[1:-1]  # Remove a column name row and a redundant row.
+trimmed_text_by_row = trimmed_text_by_row[1:-1]
+# Remove a column name row and a redundant row.
 
-data = np.array(trimmed_text_by_row)            # (150, 5) shape. 50 samples for each specie.
-species = sorted(list(set(data[..., -1])))           # ['Iris-setosa', 'Iris-versicolor', 'Iris-virginica']. Sort specy in alphabetical order.
+data = np.array(trimmed_text_by_row)
+# (150, 5) shape. 50 samples for each specie.
+species = sorted(list(set(data[..., -1])))
+# ['Iris-setosa', 'Iris-versicolor', 'Iris-virginica']. Sort specy in alphabetical order.
 species_count = [original_text.count(specie) for specie in species]
 
 sl = [0, 0, 0,]      # Sepal Length
@@ -88,7 +92,39 @@ layout = go.Layout(
 annotations = []
 
 annotations1 = [dict(
-            x=xi-0.3U
+            x=xi-0.3,
+            y=yi,
+            text=str(yi),
+            xanchor='auto',
+            yanchor='bottom',
+            showarrow=False,
+        ) for xi, yi in zip(x_cord, sl)]
+
+annotations2 = [dict(
+            x=xi-0.1,
+            y=yi,
+            text=str(yi),
+            xanchor='auto',
+            yanchor='bottom',
+            showarrow=False,
+        ) for xi, yi in zip(x_cord, sw)]
+
+annotations3 = [dict(
+            x=xi+0.1,
+            y=yi,
+            text=str(yi),
+            xanchor='auto',
+            yanchor='bottom',
+            showarrow=False,
+        ) for xi, yi in zip(x_cord, pl)]
+
+annotations4 = [dict(
+            x=xi+0.3,
+            y=yi,
+            text=str(yi),
+            xanchor='auto',
+            yanchor='bottom',
+            showarrow=False,
         ) for xi, yi in zip(x_cord, pw)]
 
 annotations = annotations1 + annotations2 + annotations3 + annotations4
@@ -96,6 +132,5 @@ layout['annotations'] = annotations
 
 fig = go.Figure(data=data, layout=layout)
 py.plot(fig, filename='specie-comparison')
-
 ```
 ![graph](https://github.com/shoark7/python-plotly/blob/master/images/iris-comparison-bar2.png)
