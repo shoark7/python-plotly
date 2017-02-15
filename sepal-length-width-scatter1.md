@@ -9,9 +9,9 @@
 Our mission today is to compare sepal length and sepal width between species.
 Graph will be scatter graph, x is sepal width, and y is sepal length. Cool.
 
-And also average poing of each specie will be drawn too. Points of them would be bigger than others.
+And also average point of each specie will be drawn too. Points of them would be bigger than others.
 
-Now I can use basic numpy and pandas
+Now I can use basic numpy and pandas.
 """
 
 import numpy as np
