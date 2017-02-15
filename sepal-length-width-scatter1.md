@@ -33,7 +33,8 @@ species = df1.Name.unique()
 fig = {
     'data': [
         {
-            'x': df1['SepalWidth'][df1['Name'] == specie], 'y': df1['SepalLength'][df1['Name'] == specie],
+            'x': df1['SepalWidth'][df1['Name'] == specie], 
+            'y': df1['SepalLength'][df1['Name'] == specie],
             'mode': 'markers', 'text': specie,
             'name': specie,
             'marker': {
